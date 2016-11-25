@@ -11,7 +11,7 @@
         android:layout_marginLeft="@dimen/medium"
         android:layout_marginRight="@dimen/medium"
         android:layout_marginTop="@dimen/small"
-        tools:text="Mexicano"
+        tools:text="Gourmet"
         />
 
     <RelativeLayout android:padding="@dimen/medium">
