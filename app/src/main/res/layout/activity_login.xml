@@ -4,7 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     >
 
-    <data></data>
+    <data>
+        <variable
+            name="handler"
+            type="unicauca.movil.restaurantesmaterial.LoginActivity"
+            />
+
+
+    </data>
 
     <TableLayout
         android:id="@+id/activity_login"
@@ -79,7 +86,9 @@
 
             <Button
                 style="@style/Widget.AppCompat.Button.Colored"
-                android:text="@string/login_in" />
+                android:text="@string/login_in"
+                android:onClick="@{()-> handler.goToMain()}"
+                />
         </TableRow>
 
     </TableLayout>
