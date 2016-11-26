@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_all"
+        android:title="@string/menu_all" />
+    <item
+        android:id="@+id/nav_gourmet"
+        android:icon="@drawable/ic_chef"
+        android:title="@string/menu_gourmet" />
+    <item
+        android:id="@+id/nav_meet"
+        android:icon="@drawable/ic_meet"
+        android:title="@string/menu_meet" />
+    <item
+        android:id="@+id/nav_vegetarian"
+        android:icon="@drawable/ic_plant"
+        android:title="@string/menu_vegetarian" />
+    <item
+        android:id="@+id/nav_pizza"
+        android:icon="@drawable/ic_pizza"
+        android:title="@string/menu_pizza" />
+    <item
+        android:id="@+id/nav_sea"
+        android:icon="@drawable/ic_fish"
+        android:title="@string/menu_sea" />
+    <item
+        android:id="@+id/nav_mexican"
+        android:icon="@drawable/ic_chile"
+        android:title="@string/menu_mexican" />
+    <item
+        android:id="@+id/nav_coffee"
+        android:icon="@drawable/ic_coffee"
+        android:title="@string/menu_coffee" />
+    <item
+        android:id="@+id/nav_bar"
+        android:icon="@drawable/ic_beer"
+        android:title="@string/menu_bar" />
+
+    <item android:title="@string/menu_profile">
+
+        <menu>
+
+            <item
+                android:id="@+id/nav_favorite"
+                android:title="@string/menu_favorite" />
+            <item
+                android:id="@+id/nav_logout"
+                android:title="@string/menu_logout" />
+        </menu>
+
+    </item>
+
+</menu>
