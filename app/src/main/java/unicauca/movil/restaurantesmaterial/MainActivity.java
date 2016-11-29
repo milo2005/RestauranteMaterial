@@ -1,21 +1,77 @@
 package unicauca.movil.restaurantesmaterial;
 
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.support.annotation.Nullable;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
+import android.view.View;
 
 import java.util.ArrayList;
 
+import unicauca.movil.restaurantesmaterial.databinding.ActivityMainBinding;
 import unicauca.movil.restaurantesmaterial.models.Restaurante;
 import unicauca.movil.restaurantesmaterial.util.L;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements DrawerLayout.DrawerListener {
+
+    ActivityMainBinding binding;
+    ActionBarDrawerToggle toggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toggle =  new ActionBarDrawerToggle(this
+                , binding.drawer
+                , R.string.menu_open
+                , R.string.menu_close);
+
+        binding.drawer.addDrawerListener(this);
+
         loadData();
     }
+
+    //region Toggle Menu
+    @Override
+    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        toggle.syncState();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(toggle.onOptionsItemSelected(item))
+            return  true;
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onDrawerSlide(View drawerView, float slideOffset) {
+        toggle.onDrawerSlide(drawerView, slideOffset);
+    }
+
+    @Override
+    public void onDrawerOpened(View drawerView) {
+        toggle.onDrawerOpened(drawerView);
+    }
+
+    @Override
+    public void onDrawerClosed(View drawerView) {
+        toggle.onDrawerClosed(drawerView);
+    }
+
+    @Override
+    public void onDrawerStateChanged(int newState) {
+        toggle.onDrawerStateChanged(newState);
+    }
+    //endregion
 
     //region Load restaurantes
     private void loadData(){
@@ -83,5 +139,6 @@ public class MainActivity extends AppCompatActivity {
         L.data.add(r6);
 
     }
+
     //endregion
 }

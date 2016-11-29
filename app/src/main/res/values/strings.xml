@@ -22,4 +22,6 @@
     <string name="detail_score">Calificación</string>
     <string name="detail_description">Descripcion</string>
     <string name="menu_profile">Perfil</string>
+    <string name="menu_open">Menu Abierto</string>
+    <string name="menu_close">Menu Cerrado</string>
 </resources>
