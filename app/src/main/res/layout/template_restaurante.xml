@@ -30,7 +30,9 @@
                     android:id="@+id/img"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/template_img"
-                    android:background="#333" />
+                    android:background="#333"
+                    app:imgUrl="@{res.imagen}"
+                    />
 
                 <ImageView
                     android:layout_width="match_parent"
