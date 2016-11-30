@@ -7,11 +7,13 @@ import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.MenuItem;
 import android.view.View;
 
 import java.util.ArrayList;
 
+import unicauca.movil.restaurantesmaterial.adapters.RestauranteAdapter;
 import unicauca.movil.restaurantesmaterial.databinding.ActivityMainBinding;
 import unicauca.movil.restaurantesmaterial.models.Restaurante;
 import unicauca.movil.restaurantesmaterial.util.L;
@@ -20,6 +22,8 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
 
     ActivityMainBinding binding;
     ActionBarDrawerToggle toggle;
+
+    RestauranteAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,10 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
                 , R.string.menu_close);
 
         binding.drawer.addDrawerListener(this);
+        L.data = new ArrayList<>();
+        adapter = new RestauranteAdapter(getLayoutInflater());
+        binding.recycler.setAdapter(adapter);
+        binding.recycler.setLayoutManager(new LinearLayoutManager(this));
 
         loadData();
     }
@@ -75,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
 
     //region Load restaurantes
     private void loadData(){
-        L.data = new ArrayList<>();
+
 
         Restaurante r1 = new Restaurante();
         r1.setNombre("Cosecha");
@@ -137,6 +145,9 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
         L.data.add(r4);
         L.data.add(r5);
         L.data.add(r6);
+
+        adapter.notifyDataSetChanged();
+
 
     }
 

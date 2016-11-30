@@ -31,6 +31,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/template_img"
                     android:background="#333"
+                    android:scaleType="centerCrop"
                     app:imgUrl="@{res.imagen}"
                     />
 
@@ -85,7 +86,7 @@
                     android:layout_toRightOf="@id/icon_place"
                     android:layout_alignBottom="@id/icon_place"
                     tools:text="Calle falsa 123"
-                    android:text="@{res.descripcion}"
+                    android:text="@{res.direccion}"
                     />
 
             </RelativeLayout>
