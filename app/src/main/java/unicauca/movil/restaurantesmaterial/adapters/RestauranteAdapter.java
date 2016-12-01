@@ -19,9 +19,15 @@ import unicauca.movil.restaurantesmaterial.util.L;
 
 public class RestauranteAdapter extends RecyclerView.Adapter<RestauranteAdapter.RestauranteViewHolder> {
 
-    LayoutInflater inflater;
+    public interface OnRestauranteListener{
+        void onRestaurante(View v);
+    }
 
-    public RestauranteAdapter(LayoutInflater inflater) {
+    LayoutInflater inflater;
+    OnRestauranteListener onRestauranteListener;
+
+    public RestauranteAdapter(LayoutInflater inflater, OnRestauranteListener onRestauranteListener) {
+        this.onRestauranteListener = onRestauranteListener;
         this.inflater = inflater;
     }
 
@@ -35,11 +41,16 @@ public class RestauranteAdapter extends RecyclerView.Adapter<RestauranteAdapter.
     @Override
     public void onBindViewHolder(RestauranteViewHolder holder, int position) {
         holder.binding.setRes(L.data.get(position));
+        holder.binding.setHandler(this);
     }
 
     @Override
     public int getItemCount() {
         return L.data.size();
+    }
+
+    public void onClickRestaurante(View v){
+        onRestauranteListener.onRestaurante(v);
     }
 
     //Retorna el tipo de view o Celda

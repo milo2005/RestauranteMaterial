@@ -10,11 +10,16 @@
             name="res"
             type="unicauca.movil.restaurantesmaterial.models.Restaurante"
             />
+        <variable
+            name="handler"
+            type="unicauca.movil.restaurantesmaterial.adapters.RestauranteAdapter"/>
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:onClick="@{(view)->handler.onClickRestaurante(view)}"
+        >
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
@@ -24,7 +29,9 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+
+                >
 
                 <ImageView
                     android:id="@+id/img"

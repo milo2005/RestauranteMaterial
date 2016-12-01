@@ -1,5 +1,6 @@
 package unicauca.movil.restaurantesmaterial;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -18,7 +19,7 @@ import unicauca.movil.restaurantesmaterial.databinding.ActivityMainBinding;
 import unicauca.movil.restaurantesmaterial.models.Restaurante;
 import unicauca.movil.restaurantesmaterial.util.L;
 
-public class MainActivity extends AppCompatActivity implements DrawerLayout.DrawerListener {
+public class MainActivity extends AppCompatActivity implements DrawerLayout.DrawerListener, RestauranteAdapter.OnRestauranteListener {
 
     ActivityMainBinding binding;
     ActionBarDrawerToggle toggle;
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
 
         binding.drawer.addDrawerListener(this);
         L.data = new ArrayList<>();
-        adapter = new RestauranteAdapter(getLayoutInflater());
+        adapter = new RestauranteAdapter(getLayoutInflater(), this);
         binding.recycler.setAdapter(adapter);
         binding.recycler.setLayoutManager(new LinearLayoutManager(this));
 
@@ -151,5 +152,17 @@ public class MainActivity extends AppCompatActivity implements DrawerLayout.Draw
 
     }
 
+
+
     //endregion
+
+    @Override
+    public void onRestaurante(View v) {
+        int pos =  binding.recycler.getChildAdapterPosition(v);
+
+        Intent intent = new Intent(this, DetailActivity.class);
+        intent.putExtra(DetailActivity.EXTRA_POS, pos);
+
+        startActivity(intent);
+    }
 }
